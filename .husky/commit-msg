@@ -1,0 +1,3 @@
+# commitlint assures that commit messages have correct message format.
+# For more info see: https://commitlint.js.org
+npx --no-install commitlint --edit "$1"

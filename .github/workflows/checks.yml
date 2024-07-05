@@ -1,0 +1,39 @@
+name: Checks
+
+# Defines the events that trigger the workflow. In this example, it triggers on pushes to the main branch and pull requests targeting the main branch.
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+# There could be multiple jobs inside eg. linting, integration-test, e2e-tests (they run in parallel by default)
+jobs:
+    code-format:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+            - name: Install dependencies
+              run: npm ci
+            - name: Run ESLint
+              run: npm run lint:check
+
+    unit-tests:
+        # unit-tests will not run in parallel with lint, but will run only after lint has finished successfully
+        needs: code-format
+
+        # Select where to run code
+        runs-on: ubuntu-latest
+        steps:
+            # This steps copies your code to the runner environment (from main branch, but can be configured)
+            - name: Checkout code
+              uses: actions/checkout@v4
+            # Installs deps that your project is using inside the runner environment
+            - name: Install dependencies
+              run: npm ci
+            # Run the tests inside the runner environment
+            - name: Run tests
+              run: npm run test
