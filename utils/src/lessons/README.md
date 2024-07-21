@@ -8,20 +8,20 @@
 
 ## 2. Create new files
 
-Please create 2 new files where name is in format: `<2 first letters from your firstname><3 first letters from your surname>`. Example:
+Please create 2 new files under where name is in format: `<2 first letters from your firstname><3 first letters from your surname>`. Example:
 
 ```
-If your name would be: Jan Novak
+If your name is: Jan Novak
 
-Then you create files like:
+Then create files named like:
 - janov.js
 - janov.test.js
 ```
 
 ## 3. Code & Test
 
--   Inside your `tovond.js` put any function that you want that does something useful
--   Inside your `tovond.test.js` put any tests for your functions (target 100 % coverage)
+- In `janov.js` implement function that does something useful
+- In `janov.test.js` implement tests for your function (target 100 % coverage)
 
 ## 4. Save your code changes
 
